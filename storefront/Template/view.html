@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+</head>
+<style>
+    table{
+        border-collapse: collapse;
+        width: 100%;
+    }
+    td,th{
+        border: 1px solid black;
+        padding: 10px;
+    }
+</style>
+<body>
+    <form action="">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <th>list_no</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Password</th>
+                <th>Confirm Password</th>
+                <th>Gender</th>
+            </tr>
+
+            {% for i in cm %}
+            <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.firstname}}</td>
+                <td>{{i.lastname}}</td>
+                <td>{{i.email}}</td>
+                <td>{{i.phonenumber}}</td>
+                <td>{{i.password}}</td>
+                <td>{{i.confirmpassword}}</td>
+                <td>{{i.gender}}</td>
+                <td><a href="{% url 'detailedview' i.id%}" class="btn btn-green">VIEW</a></td>
+                <td><a href="{% url 'delete' i.id%}" class="btn btn-green">DELETE</a></td>
+                <td><a href="{% url 'update' i.id%}" class="btn btn-primary">Update</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+    
+</body>
+</html>
